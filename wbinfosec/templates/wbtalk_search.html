@@ -1,0 +1,44 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class='hero'></div>
+<div class='column col-7 col-mx-auto'>
+	<form class="form-horizontal" method='post'>
+		{% csrf_token %}
+		<div class="form-group">
+			<div class="col-3 col-sm-12">
+				<label class="form-label" for="input-example-1">词汇集合【不支持单字】</label>
+			</div>
+			<div class="col-9 col-sm-12">
+				<input class="form-input" type="text" id='modes' name='modes' placeholder="输入模式串, 多个模式串通过空格' '分隔, 注意分隔符前后不要有多余空格">
+			</div>
+		</div>
+		<button class='btn btn-success col-3 p-centered' type='submit'>文本搜索</button>
+	</form>
+</div>
+{% if wbtalk_list != 'None' %}
+<div class='column col-10 col-mx-auto'>
+	<table class='table'>
+		<thead>
+			<tr>
+				<th class='col-2'>用户</th>
+				<th class='col-8'>内容</th>
+				<th class='col-2'>匹配结果</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for wbtalk in wbtalk_list %}
+			<tr>
+				<td>{{ wbtalk.user_screen }}</td>
+				<td>{{ wbtalk.text }}</td>
+				<td>
+					{% for mate in wbtalk.mate %} {% if mate == 'None' %}
+					<span class="label">无</span>
+					{% else %}
+					<span class="label label-success">{{ mate }}</span>
+					{% endif %} {% endfor %}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %} {% endblock %}

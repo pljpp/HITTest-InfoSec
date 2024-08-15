@@ -1,0 +1,67 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class='col-10 col-mx-auto'>
+	<div class='col-12'>
+		<table class='table'>
+			<thead>
+				<tr>
+					<th class='col-1'>类别</th>
+					<th class='col-1'>数量</th>
+					<th class='col-10'>识别结果</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>正常图片</td>
+					<td>{{ pic.neutral }}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>可能涉政</td>
+					<td>{{ pic.politial_len }}</td>
+					<td>
+						{% for forpic in pic.politial %}
+						<label class='label label-primary'>
+							{{ forpic }}
+							<a href='/wbpic/report/?mid={{ forpic }}&like=1' class='btn btn-sm' target='_block'>
+								<i class='icon icon-link'></i>
+								投诉
+							</a>
+						</label>
+						{% endfor %}
+					</td>
+				</tr>
+				<tr>
+					<td>可能暴力</td>
+					<td>{{ pic.terrorism_len }}</td>
+					<td>
+						{% for forpic in pic.terrorism %}
+						<label class='label label-error'>
+							{{ forpic }}
+							<a href='/wbpic/report/?mid={{ forpic }}&like=1' class='btn btn-sm' target='_block'>
+								<i class='icon icon-link'></i>
+								投诉
+							</a>
+						</label>
+						{% endfor %}
+					</td>
+				</tr>
+				<tr>
+					<td>可能色情</td>
+					<td>{{ pic.porn_len }}</td>
+					<td>
+						{% for forpic in pic.porn %}
+						<label class='label label-warning'>
+							{{ forpic }}
+							<a href='/wbpic/report/?mid={{ forpic }}&like=0' class='btn btn-sm' target='_block'>
+								<i class='icon icon-link'></i>
+								投诉
+							</a>
+						</label>
+						{% endfor %}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

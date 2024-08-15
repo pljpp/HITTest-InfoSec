@@ -1,0 +1,25 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class='filter column col-9 col-mx-auto'>
+	<input type="radio" id="tag-1" class="filter-tag" name="filter-radio" hidden='' checked>
+	<input type="radio" id="tag-2" class="filter-tag" name="filter-radio" hidden='' >
+	<input type="radio" id="tag-3" class="filter-tag" name="filter-radio" hidden='' >
+
+	<div class="filter-nav">
+		<label class="chip" for="tag-1">柱形图</label>
+		<label class="chip" for="tag-2">扇形图</label>
+		<label class="chip" for="tag-3">词云</label>
+	</div>
+
+	<div class='filter-body column col-12 col-mx-auto'>
+		<div class="filter-item card" data-tag="tag-1">
+			<img src='{{ htmlbar }}' class='img-responsive' alt='柱形图'>
+		</div>
+		<div class="filter-item card" data-tag="tag-2">
+			<img src='{{ htmlpie }}' class='img-responsive' alt='扇形图'>
+		</div>
+		<div class="filter-item card" data-tag="tag-3">
+			<img src='{{ htmlcloud }}' class='img-responsive' alt='词云'>
+		</div>
+	</div>
+</div>
+{% endblock %}

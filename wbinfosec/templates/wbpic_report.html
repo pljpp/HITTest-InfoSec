@@ -1,0 +1,60 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+    <div class='hero'></div>
+    <div class='column col-6 col-mx-auto'>
+        <form class="form-horizontal" method='post'>
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="col-3 col-sm-12">
+                    <label class="form-label" for="input-example-1">博文编号</label>
+                </div>
+                {% if mblog_id == 'None' %}
+                    <div class="col-9 col-sm-12">
+                        <input class="form-input" type="text" id='mblog_id' name='mblog_id' placeholder='输入博文编号'>
+                    </div>
+                {% else %}
+                    <div class="col-9 col-sm-12">
+                        <input class="form-input" type="text" id='mblog_id' name='mblog_id' value="{{ mblog_id }}">
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <div class="col-3 col-sm-12">
+                    <label class="form-label" for="input-example-1">投诉类型</label>
+                </div>
+                <div class="col-9 col-sm-12">
+                    <div class="form-group">
+                        <label class="form-radio">
+                            {% if like == '0' %}
+                                <input type="radio" name="like" value="2_201" checked>
+                            {% else %}
+                                <input type="radio" name="like" value="2_201">
+                            {% endif %}
+                            <i class="form-icon"></i> 涉黄信息_色情导流
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="like" value="15_1510">
+                            <i class="form-icon"></i> 违法信息_诈骗
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="like" value="41_4107">
+                            <i class="form-icon"></i> 涉未成年人_伤害未成年人
+                        </label>
+                        <label class="form-radio">
+                            <input type="radio" name="like" value="42_4205">
+                            <i class="form-icon"></i> 饭圈违规_造谣爆料
+                        </label>
+                        <label class="form-radio">
+                            {% if like == '1' %}
+                                <input type="radio" name="like" value="44_4404" checked>
+                            {% else %}
+                                <input type="radio" name="like" value="44_4404">
+                            {% endif %}
+                            <i class="form-icon"></i> 侵权行为_其他侵权
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button class='btn btn-success col-3 p-centered' type='submit'>投诉</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class='col-10 col-mx-auto'>
+	<div class='col-12'>
+		<table class='table'>
+			<thead>
+				<tr>
+					<th class='col-2'>用户</th>
+					<th class='col-8'>内容</th>
+					<th class='col-2'>属地</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for wbcomment in wbcomment_list %}
+				<tr>
+					<td class="sixth">
+						<a href='/wbuser/new/?need_id={{ wbcomment.uid }}'>{{ wbcomment.screen }}</a>
+					</td>
+					<td class="three-fifth">{{ wbcomment.text }}</td>
+					<td>{{ wbcomment.source }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

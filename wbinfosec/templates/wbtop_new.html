@@ -1,0 +1,26 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class='col-9 col-mx-auto'>
+	<div class='col-12'>
+		<table class='table'>
+			<thead>
+				<tr>
+					<th>话题</th>
+					<th>分类</th>
+					<th>热度</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for wbtop in list_wbtop %}
+				<tr class='active'>
+					<td>
+						<a href='/wbtalk/new/?need_id={{ wbtop.top_url }}'>{{ wbtop.word }}</a>
+					</td>
+					<td>{{ wbtop.category }}</td>
+					<td>{{ wbtop.num }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

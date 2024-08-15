@@ -1,0 +1,25 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class='hero'></div>
+<div class='column col-6 col-mx-auto'>
+	<form class="form-horizontal" method='post'>
+		{% csrf_token %}
+		<div class="form-group">
+			<div class="col-3 col-sm-12">
+				<label class="form-label" for="input-example-1">标题</label>
+			</div>
+			<div class="col-9 col-sm-12">
+				<input class="form-input" type="text" id='topic' name='topic' placeholder='输入话题名称'>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-3 col-sm-12">
+				<label class="form-label" for="input-example-1">博文内容</label>
+			</div>
+			<div class="col-9 col-sm-12">
+                <textarea class="form-input" type="text" id='blog' name='blog' placeholder='请输入文本内容'></textarea>
+			</div>
+		</div>
+		<button class='btn btn-success col-3 p-centered' type='submit'>发送微博</button>
+	</form>
+</div>
+{% endblock %}

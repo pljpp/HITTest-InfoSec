@@ -1,0 +1,30 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class='col-10 col-mx-auto'>
+	<div class='col-12'>
+		<table class='table'>
+			<thead>
+				<tr>
+					<th class='col-2'>用户</th>
+					<th class='col-9'>内容</th>
+					<th class='col-1'>图片数量</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for wbtalk in wbtalk_list %}
+				<tr class='active'>
+					<td>
+						<a href='/wbuser/new/?need_id={{ wbtalk.user_url }}' class='text-primary'>{{ wbtalk.user_screen }}</a>
+					</td>
+					<td>
+						<a href='/wbcomment/new/?need_id={{ wbtalk.mblog_id }}' class='text-dark'>{{ wbtalk.text }}</a>
+					</td>
+					<td>
+						<span class="label label-success">{{ wbtalk.pic_len }}</span>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+{% endblock %}

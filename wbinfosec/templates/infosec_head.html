@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+{% load static %}
+<link rel='stylesheet' type='text/css' href="{% static 'spectre.min.css' %}">
+<link rel='stylesheet' type='text/css' href="{% static 'spectre-exp.min.css' %}">
+<link rel='stylesheet' type='text/css' href="{% static 'spectre-icons.min.css' %}">
+<title>微博内容识别与管控系统</title>
+</head>
+<body>
+	<header class='navbar column col-12'>
+		<div class='column col-8'>
+			<section class="navbar-section">
+				<a href='/infosec/test/' class='btn btn-link text-dark'>
+					<i class='icon icon-flag'></i>
+					微博内容识别与管控系统
+				</a>
+			</section>
+		</div>
+		<div class='column col-2'>
+			<section class="navbar-section">
+				<div class="dropdown">
+					<a href='#' class='btn btn-link dropdown-toggle'>
+						<span class='label label-primary'>
+							获取微博数据
+							<i class="icon icon-caret"></i>
+						</span>
+					</a>
+					<ul class='menu bg-secondary'>
+						<li>
+							<a href='/wbtop/new/' class='text-primary'>微博热搜</a>
+						</li>
+						<li>
+							<a href='/need/wbtalk/' class='text-primary'>微博话题</a>
+						</li>
+						<li>
+							<a href='/need/wbuser/' class='text-primary'>用户博文</a>
+						</li>
+						<li>
+							<a href='/need/wbcomment' class='text-primary'>博文评论</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+		<div class='column col-2'>
+			<section class="navbar-section">
+				<div class="dropdown">
+					<a href='#' class='btn btn-link dropdown-toggle'>
+						<span class="label label-secondary">
+							分析微博数据
+							<i class="icon icon-caret"></i>
+						</span>
+					</a>
+					<ul class='menu bg-primary'>
+						<li>
+							<a href='/wbtop/show/' class='text-secondary'>热搜可视化</a>
+						</li>
+						<li>
+							<a href='/wbtalk/show/' class='text-secondary'>微博话题</a>
+						</li>
+						<li>
+							<a href='/wbuser/show/' class='text-secondary'>用户博文</a>
+						</li>
+						<li>
+							<a href='/wbcomment/show/' class='text-secondary'>博文评论</a>
+						</li>
+						<li>
+							<a href='/wbtalk/report/' class='text-secondary'>博文投诉</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+	</header>
+	{% block infosec %}{% endblock %}
+</body>
+</html>

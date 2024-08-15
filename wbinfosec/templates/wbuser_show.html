@@ -1,0 +1,49 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+    <div class="col-10 col-mx-auto">
+        <ul class="menu">
+            <li class="menu-item">
+                <i class="icon icon-people"></i>
+                {{ wbuser_info.screen }}
+            </li>
+            <li class="divider"></li>
+            <li class="menu-item">
+                粉丝数量:
+                <span class="label label-secondary">{{ wbuser_info.follow }}</span>
+            </li>
+            <li class="menu-item">
+                IP属地:
+                <span class="label label-secondary">{{ wbuser_info.location }}</span>
+            </li>
+            <li class="menu-item">
+                信用情况:
+                <span class="label label-secondary">{{ wbuser_info.credit }}</span>
+            </li>
+        </ul>
+        <table class='table'>
+            <thead>
+            <tr>
+                <th class='col-10'>内容</th>
+                <th class='col-1'>匹配结果</th>
+                <th class="col-1">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for wbuser in list_wbuser %}
+                <tr>
+                    <td>{{ wbuser.text }}</td>
+                    <td>
+                        {% for mate in wbuser.mate %} {% if mate == 'None' %}
+                            <span class="label success">无</span>
+                        {% else %}
+                            <span class="label error ">{{ mate }}</span>
+                        {% endif %} {% endfor %}
+                    </td>
+                    <td>
+                        <a href="/wbuser/report/?mid={{ wbuser.mid }}" class="btn btn-error">投诉</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

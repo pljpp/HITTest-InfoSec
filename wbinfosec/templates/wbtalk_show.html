@@ -1,0 +1,81 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+    <style>
+        .fixside {
+            position: fixed;
+        }
+    </style>
+    <div class='columns col-oneline'>
+        <div class='col-1 fixside'>
+            <ul class="nav">
+                <li class="nav-item active">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class='btn text-primary' href='/wbtalk/search/'>
+                                <i class='icon icon-search'></i>
+                                短语搜索
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='btn btn-primary text-gray' href="/wbtalk/pic/">
+                                <i class='icon icon-photo'></i>
+                                图片审核
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class='btn btn-error text-secondary' href="/wbtalk/sendtalk/">
+                                <i class='icon icon-upload'></i>
+                                风向引导
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class='col-11 col-ml-auto'>
+            <div class='col-12'>
+                <table class='table'>
+                    <thead>
+                    <tr>
+                        <th class='col-2'>用户</th>
+                        <th class='col-7'>内容</th>
+                        <th class='col-1'>情感分析</th>
+                        <th class='col-1'>匹配结果</th>
+                        <th class='col-1'>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for wbtalk in wbtalk_list %}
+                        <tr>
+                            <td>{{ wbtalk.user_screen }}</td>
+                            <td>{{ wbtalk.text }}</td>
+                            <td>
+                                {% if wbtalk.emo == 'None' %}
+                                    <span class="label">错误</span>
+                                {% elif wbtalk.emo == '2' %}
+                                    <span class="label label-primary">无效</span>
+                                {% elif wbtalk.emo == '1' %}
+                                    <span class="label label-success">褒义</span>
+                                {% elif wbtalk.emo == '0' %}
+                                    <span class="label label-warning">中性</span>
+                                {% else %}
+                                    <span class="label label-error">贬义</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% for mate in wbtalk.mate %} {% if mate == 'None' %}
+                                    <span class="label label-success">无</span>
+                                {% else %}
+                                    <span class="label label-error">{{ mate }}</span>
+                                {% endif %} {% endfor %}
+                            </td>
+                            <td>
+                                <a href="/wbtalk/report/?mblog_id={{ wbtalk.mblog_id }}" class="btn btn-error">投诉</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

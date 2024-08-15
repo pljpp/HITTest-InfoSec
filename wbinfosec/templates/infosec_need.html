@@ -1,0 +1,25 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class='hero'></div>
+<div class='column col-6 col-mx-auto'>
+	<form class="form-horizontal" method='post'>
+		{% csrf_token %}
+		<div class="form-group">
+			<div class="col-3 col-sm-12">
+				<label class="form-label" for="input-example-1">编号或标题</label>
+			</div>
+			<div class="col-9 col-sm-12">
+				<input class="form-input" type="text" id='need_id' name='need_id' placeholder='输入话题名称、用户编号或博文编号'>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-3 col-sm-12">
+				<label class="form-label" for="input-example-1">数量</label>
+			</div>
+			<div class="col-9 col-sm-12">
+				<input class="form-input" type="text" id='need_num' name='need_num' placeholder='获取的话题数量、用户博文数量，获取评论不需要输入'>
+			</div>
+		</div>
+		<button class='btn btn-success col-3 p-centered' type='submit'>获取微博</button>
+	</form>
+</div>
+{% endblock %}

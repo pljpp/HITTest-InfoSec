@@ -1,0 +1,25 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class='hero'></div>
+<div class='column col-6 col-mx-auto'>
+	<form class="form-horizontal" method='post'>
+		{% csrf_token %}
+		<div class="form-group">
+			<div class="col-3 col-sm-12">
+				<label class="form-label" for="input-example-1">博文编号</label>
+			</div>
+			<div class="col-9 col-sm-12">
+				<input class="form-input" type="text" id='api_mblogid' name='api_mblogid' placeholder='输入博文编号'>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-3 col-sm-12">
+				<label class="form-label" for="input-example-1">评论内容</label>
+			</div>
+			<div class="col-9 col-sm-12">
+				<input class="form-input" type="text" id='api_comment' name='api_comment' placeholder='输入评论内容'>
+			</div>
+		</div>
+		<button class='btn btn-success col-3 p-centered' type='submit'>发布评论</button>
+	</form>
+</div>
+{% endblock %}

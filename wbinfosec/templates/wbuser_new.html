@@ -1,0 +1,43 @@
+{% extends 'infosec_head.html' %} {% block infosec %}
+<div class="col-10 col-mx-auto">
+	<ul class="menu">
+		<li class="menu-item">
+			<i class="icon icon-people"></i>
+			{{ wbuser_info.screen }}
+		</li>
+		<li class="divider"></li>
+		<li class="menu-item">
+			粉丝数量:
+			<span class="label label-secondary">{{ wbuser_info.follow }}</span>
+		</li>
+		<li class="menu-item">
+			IP属地:
+			<span class="label label-secondary">{{ wbuser_info.location }}</span>
+		</li>
+		<li class="menu-item">
+			信用情况:
+			<span class="label label-secondary">{{ wbuser_info.credit }}</span>
+		</li>
+	</ul>
+	<table class='table'>
+		<thead>
+			<tr>
+				<th class='col-10'>内容</th>
+				<th class='col-1'>评论</th>
+				<th class='col-1'>点赞</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for wbuser in list_wbuser %}
+			<tr>
+				<td>{{ wbuser.text }}</td>
+				<td>
+					<a href='/wbcomment/new/?need_id={{ wbuser.mid }}'>{{ wbuser.comment }}</a>
+				</td>
+				<td>{{ wbuser.attitude }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
